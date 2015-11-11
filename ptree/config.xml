@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<configuration>
+
+	<dna>
+		<charRepresentation>
+			<adenine>A</adenine>
+			<thymine>T</thymine>
+			<guanine>G</guanine>
+			<cytosine>C</cytosine>
+			<mask>*</mask> 
+			<gap>-</gap>
+		</charRepresentation>
+        <countGapAsChange>true</countGapAsChange>
+	</dna>
+
+	<ptree>
+		<threadCount>1</threadCount> <!-- each dataset can be computed in a separate thread -->
+		<skipDatasetNum>0</skipDatasetNum> <!-- the number of first datasets that will be skipped in the input file -->
+		<intermediates>
+			<intMaxProcess>5000</intMaxProcess> <!-- maximum number of intermediates that can be added at once to the current tree topology -->
+			<intStrategy>3</intStrategy> <!-- 0 ~ no strategy, 1~ random, 2 ~ biggest mutation sets, 3 ~ biggest cost decrease (default) -->
+			<intStrategyCoefficient>4.0</intStrategyCoefficient> <!-- coefficient*(degree of a node) == max. number of inferred intermediates at a node -->
+			<intStrategyThreshold>0.7</intStrategyThreshold> <!-- after (threshold)*100 % of intermediates has been taken in one loop, it switches to strategy 0 for the next loops -->	
+			<intStrategyMinIntAtNode>1</intStrategyMinIntAtNode> <!-- the minimum number of intermediates inferred at an internal node -->
+			<intFilterViaLocalTopology>true</intFilterViaLocalTopology> <!-- filter intermediates according to the local tree topology -->
+			<intFilterViaLocalTopologyThreshold>0.1</intFilterViaLocalTopologyThreshold> <!-- switch off the filter if (intermediates entered the filter) < (tree size)*(threshold) -->		
+			<deleteIntCoef>0.1</deleteIntCoef> 
+		</intermediates>
+	</ptree>
+	
+	<njAlg> 
+		<implementation>1</implementation> <!-- 0 ~ java, 1 ~ clearcut (default) -->
+		<correction>0</correction> <!-- 0 ~ no correction (default), 1 ~ Jukes-Cantor correction, 2 ~ Kimura correction; only for clearcut implementation -->
+		<relaxedVersion>1</relaxedVersion> <!-- 0 ~ normal nj, 1 ~ relaxed nj (default); only for clearcut implementation -->
+	</njAlg> 
+	
+	<treeComparison>
+		<treeComparisonMethod>2</treeComparisonMethod> <!-- compare trees according to its: 0 ~ current cost, 1 ~ current (partial) fitch cost, 2 ~ real fitch cost considering all originals as leafs  (default) -->
+	</treeComparison>
+	
+	<initTree> <!-- parameters of the main loop -->
+		<initTreeAsNJ>true</initTreeAsNJ> <!-- true ~ init tree reconstructed from NJ (default); false ~ init tree without masking -->
+		<initTreeBurnInIter>1</initTreeBurnInIter> <!-- the number of iterations of the burn in phase -->
+		<initTreeAdditionalMaxIter>0</initTreeAdditionalMaxIter> <!-- after the burn in phase, maximum number of iterations without improvement -->
+	</initTree>
+	
+	<outputTree>
+		<computeFitchCost>true</computeFitchCost> <!-- true ~ compute the fitch cost (false ~ don`t) -->
+		<reconstructOutputTree>false</reconstructOutputTree> <!-- true ~ reconstruct the output tree (mutation sets) so that it had the computed fitch cost (false ~ don`t) -->
+		<noIntNodeLabels>true</noIntNodeLabels> <!-- true ~ tree with only leaf labels, true costs, no mutations listed; false ~ all labels, true costs + 0.5, mutations on adjacent edges  -->
+	</outputTree>
+	
+	<test> <!-- which properties will be tested true ~ test, false ~ do not test  -->
+		<dnaCharRepresentation>false</dnaCharRepresentation> <!-- test whether DNA sequences contain allowed characters  -->
+		<outputTreeStructure>true</outputTreeStructure> <!-- test the tree structure at the end  -->
+	</test>
+	
+	<logging>
+		<trace>true</trace> <!-- whether to print the progress of the program or not (good for sets bigger than 1000 seq) -->
+		<traceMode>3</traceMode> <!-- 0 ~ all; 1 ~ all costs; 2 ~ accepted costs; 3 ~ cost improvements; 4 ~ current costs only; 5 ~ accepted and current costs; 6 current and proposed costs -->
+	</logging>
+	
+</configuration>

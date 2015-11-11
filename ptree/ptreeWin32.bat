@@ -1,0 +1,1 @@
+java -Xmx1024m -Djava.library.path=./resources/lib/win32/ -jar ./resources/ptree.jar %1 %2 %3
