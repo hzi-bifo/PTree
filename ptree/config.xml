@@ -7,10 +7,8 @@
 			<thymine>T</thymine>
 			<guanine>G</guanine>
 			<cytosine>C</cytosine>
-			<mask>*</mask> 
 			<gap>-</gap>
 		</charRepresentation>
-        <countGapAsChange>true</countGapAsChange>
 	</dna>
 
 	<ptree>
@@ -19,12 +17,12 @@
 		<intermediates>
 			<intMaxProcess>5000</intMaxProcess> <!-- maximum number of intermediates that can be added at once to the current tree topology -->
 			<intStrategy>3</intStrategy> <!-- 0 ~ no strategy, 1~ random, 2 ~ biggest mutation sets, 3 ~ biggest cost decrease (default) -->
-			<intStrategyCoefficient>4.0</intStrategyCoefficient> <!-- coefficient*(degree of a node) == max. number of inferred intermediates at a node -->
+			<intStrategyCoefficient>4.0</intStrategyCoefficient> <!-- coefficient*(degree of a node) == max. number of inferred intermediates at this node -->
 			<intStrategyThreshold>0.7</intStrategyThreshold> <!-- after (threshold)*100 % of intermediates has been taken in one loop, it switches to strategy 0 for the next loops -->	
-			<intStrategyMinIntAtNode>1</intStrategyMinIntAtNode> <!-- the minimum number of intermediates inferred at an internal node -->
+			<intStrategyMinIntAtNode>1</intStrategyMinIntAtNode> <!-- the minimum number of intermediates inferred at an internal node (if > 0) -->
 			<intFilterViaLocalTopology>true</intFilterViaLocalTopology> <!-- filter intermediates according to the local tree topology -->
-			<intFilterViaLocalTopologyThreshold>0.1</intFilterViaLocalTopologyThreshold> <!-- switch off the filter if (intermediates entered the filter) < (tree size)*(threshold) -->		
-			<deleteIntCoef>0.1</deleteIntCoef> 
+			<intFilterViaLocalTopologyThreshold>0.1</intFilterViaLocalTopologyThreshold> <!-- switch off the FilterViaLocalTopology if (intermediates entered the filter) < (tree size)*(threshold) -->		
+			<deleteIntCoef>0.1</deleteIntCoef> <!-- How many intermediates will be deleted in one loop where 0.1 ~ 10% intermediates will be deleted -->
 		</intermediates>
 	</ptree>
 	
@@ -39,15 +37,15 @@
 	</treeComparison>
 	
 	<initTree> <!-- parameters of the main loop -->
-		<initTreeAsNJ>true</initTreeAsNJ> <!-- true ~ init tree reconstructed from NJ (default); false ~ init tree without masking -->
-		<initTreeBurnInIter>1</initTreeBurnInIter> <!-- the number of iterations of the burn in phase -->
-		<initTreeAdditionalMaxIter>0</initTreeAdditionalMaxIter> <!-- after the burn in phase, maximum number of iterations without improvement -->
+		<initTreeAsNJ>true</initTreeAsNJ> <!-- true ~ initial tree is reconstructed from an NJ tree (default), false ~ initial tree is constructed from the pattern based method -->
+		<initTreeBurnInIter>100</initTreeBurnInIter> <!-- the number of iterations of the burn in phase -->
+		<initTreeAdditionalMaxIter>10</initTreeAdditionalMaxIter> <!-- after the burn in phase, maximum number of iterations without improvement -->
 	</initTree>
 	
 	<outputTree>
-		<computeFitchCost>true</computeFitchCost> <!-- true ~ compute the fitch cost (false ~ don`t) -->
-		<reconstructOutputTree>false</reconstructOutputTree> <!-- true ~ reconstruct the output tree (mutation sets) so that it had the computed fitch cost (false ~ don`t) -->
-		<noIntNodeLabels>true</noIntNodeLabels> <!-- true ~ tree with only leaf labels, true costs, no mutations listed; false ~ all labels, true costs + 0.5, mutations on adjacent edges  -->
+		<computeFitchCost>true</computeFitchCost> <!-- true ~ compute the fitch cost, (false ~ don`t) -->
+		<reconstructOutputTree>false</reconstructOutputTree> <!-- true ~ reconstruct the mutation sets so that the mutation sets represented the computed fitch cost (false ~ don`t) -->
+		<noIntNodeLabels>true</noIntNodeLabels> <!-- true ~ tree with only leaf labels, true costs (~fitch cost), no mutations listed; false ~ all labels, true costs + 0.5, mutations on adjacent edges  -->
 	</outputTree>
 	
 	<test> <!-- which properties will be tested true ~ test, false ~ do not test  -->

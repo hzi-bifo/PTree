@@ -10,6 +10,7 @@ Windows (tested on Windows XP 32bit and Windows Vista 64bit)
 
 Software:
 Java 1.6 (including JNI (Java Native Interface) support which may require corresponding Java SDK)
+(Java 1.6 is recommended however there are no known issues with Java 1.7)
 
 Hardware:
 ~4GB of the main memory (Java heap size) for datasets containing up to  ~4,000 sequences

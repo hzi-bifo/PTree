@@ -13,7 +13,7 @@ Germany,
 
 Please read the following Agreement carefully.
 
-PTree is not open source and the program remains property of the HHU. The software must not be further distributed without prior permission of the HHU. If you use the Software in your scientific work, please cite as [the reference will be provided by the authors after the acceptance of the corresponding scientific paper]. We would also appreciate it if you send (a link to) your papers, so that we can learn about your research. 
+PTree is not open source and the program remains property of the HHU. The software must not be further distributed without prior permission of the HHU. If you use the Software in your scientific work, please cite as [Gregor et al. (2013) PTree: pattern-based, stochastic search for maximum parsimony phylogenies. PeerJ 1:e89 http://dx.doi.org/10.7717/peerj.89]. We would also appreciate it if you send (a link to) your papers, so that we can learn about your research. 
 
 By clicking on "I accept the License Agreement" or by downloading or installing the software you indicate that you have read and accepted the provisions of the Agreement and that you agree to be bound by all terms and conditions set forth herein. If you do not agree to any of the terms of this Agreement, do not submit a request for the Software and destroy any copies of the Software in your possession immediately.
 
@@ -72,7 +72,7 @@ This Agreement is made and shall be construed in accordance with the laws of Ger
 If for any reason a court of competent jurisdiction finds any provision of this Agreement, or portion thereof, to be unenforceable, that provision of the Agreement will be enforced to the maximum extent permissible so as to affect the intent of the parties, and the remainder of this Agreement will continue in full force and effect.
 
 11. Citations
-If you publish results obtained using the software, then we require that you cite the software as follows [the reference will be provided by the authors after the acceptance of the corresponding scientific paper]. 
+If you publish results obtained using the software, then we require that you cite the software as follows [Gregor et al. (2013) PTree: pattern-based, stochastic search for maximum parsimony phylogenies. PeerJ 1:e89 http://dx.doi.org/10.7717/peerj.89]. 
 
 12. Entire Agreement
 
