@@ -1,0 +1,66 @@
+CLEARCUT - FAST NJ ALG.
+
+clearcut version 1.0.9
+
+INTRODUCTION
+
+Our program is using an external C library that implements the NJ method.
+More can be found in: http://bioinformatics.hungry.com/clearcut/
+
+While clearcut is a command line application, 
+our program needs a library that is accessed using the JNI (Java native interface).
+
+It is necessary to compile the library for each platform separately.
+All (.h .cpp) files that are needed to create the library are in the directory (CreateDll01).
+
+HOW TO CREATE THE LIBRARY
+
+Windows:
+    (http://www.codeproject.com/KB/cs/usecdlllibincs.aspx)
+	The release contains a directory (CreateDll01) with Microsoft Visual Studio 2005 project that creates a .dll library for Windows.
+	It is necessary to include the library "Clearcut.dll" in the working directory of the java program.
+
+Unix:
+	(http://www.linux.org/docs/ldp/howto/Program-Library-HOWTO/shared-libraries.html)	
+	Assume that all (.h .cpp) files are in a directory "source"
+
+	Create object files:
+		gcc -fPIC -g -c -O3 -Wall ./source/*.cpp
+
+	Create a library:
+		g++ -shared -Wl,-soname,libClearcut.so.1 -o libClearcut.so.1.0.1 *.o -lc
+			
+	It is necessary to determine the library path "-Djava.library.path=path_to_the_library" when starting the java program
+	For instance assume that the library (libClearcut.so) is in the working directory, then we run the program as:
+	java -Djava.library.path=. -jar PhylogeneticTreeCMD.jar input_file.phylip output_file.nxs
+
+Mac:
+	gcc -g -c -O3 -I/System/Library/Frameworks/JavaVM.framework/Headers ./source/*.cpp 
+	
+	g++ -dynamiclib -o libClearcut.jnilib *.o -framework JavaVM
+
+
+IMPLEMENTATION DETAILS
+Directory clearcut-1.0.9 contains original clearcut source code that was modified to create the library.
+	
+Project (clearcut01) is a Microsoft Visual Studio 2005 project that contains modified clearcut command line application.
+Testing method is in clearcut_main.cpp. Here we can see how to create an input and what is the output of the modified
+clearcut implementation.
+The interface to clearcut is the method defined in clearcut_nj.h
+This method parse arguments and calls clearcut_main2 (which is modified original main method from clearcut.c)
+More is written in the source code..
+
+Project (CreateDll01) is a Microsoft Visual Studio 2005 project that is very similar to the clearcut01 project.
+If we copy all (.h .cpp) files from clearcut01 (except for stdafx.h, stdafx.cpp, clearcut_main.cpp) to CreateDll01 directory 
+and add (clearcut_Clearcut.h and clearcut_Clearcut.cpp) we get CreateDll01 project.
+The clearcut_Clearcut.h is the JNI interface.
+The clearcut_Clearcut.cpp is getting arguments from Java, calls a method from clearcut_nj.h which is the interface to clearcut.
+Transform clearcut output to java output. More can be found in clearcut_Clearcut.cpp
+
+Note
+The original source code is pure C.
+All .c files were rename to .cpp files to run in the MS Visual Studio 2005.
+But it doesn` matter since the source code is C anyway.
+		
+	
+			
