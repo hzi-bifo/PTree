@@ -1,3 +1,2 @@
-content created by igregot on 15.10.2015 as:
-
-meerkat.cs.uni-duesseldorf.de:/home/igregor/ptree/release/ptreeForGary/ptree.tar.gz
+Content modified to match release 1.2
+(by algbioi on 1.9.2017)
