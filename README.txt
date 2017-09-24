@@ -1,5 +1,9 @@
 PTree: Pattern-based, Stochastic Search for Maximum Parsimony Phylogenies.
 
+ALGORITHM DESCRIPTION
+
+https://peerj.com/articles/89
+
 REQUIREMENTS
 
 OS:
