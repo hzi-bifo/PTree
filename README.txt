@@ -4,6 +4,10 @@ ALGORITHM DESCRIPTION
 
 https://peerj.com/articles/89
 
+DOWNLOAD
+
+https://research.bifo.helmholtz-hzi.de
+
 REQUIREMENTS
 
 OS:
@@ -21,7 +25,7 @@ Hardware:
 ~8GB of the main memory (Java heap size) for datasets containing up to ~10,000 sequences
 
 INSTALL
-Copy the unpacked "release" folder in your favorite program folder.
+Copy the unpacked "release" folder in your favourite program folder.
 
 
 RUN
